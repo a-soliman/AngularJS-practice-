@@ -21,6 +21,18 @@
 			</ul>
 		</div>
 
+		<!--Filters-->
+		<div class="container"
+		data-ng-init="family=[{name:'Ahmed Soliman',city:'Cairo'},{name:'Lilit Postoyan',city:'Yerevan'},{name:'Leyla Soliman',city:'San Francisco'}]">
+			name:
+			<br />
+			<input type="text" data-ng-model="person" />
+			<br />
+			<ul>
+				<li data-ng-repeat="person in family | filter:person | orderBy:'city'"> {{ person.name | uppercase }} - {{ person.city | lowercas }} </li>
+			</ul>
+		</div>
+
 
 
 
