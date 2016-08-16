@@ -12,7 +12,14 @@
 		<br />
 		<input type="text" data-ng-model="name" /> {{ name }}
 
-		
+		<!-- Iterating with ng-repeat-->
+		<div class="container"
+			data-ng-init="names=['Ahmed', 'Lilit', 'Leyla'] ">
+			<br />
+			<ul>
+				<li data-ng-repeat="personName in names">{{personName}}</li>
+			</ul>
+		</div>
 
 
 
