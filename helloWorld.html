@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>1 | Hello world!</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+	</head>
+	<body>
+		<div data-ng-app>
+		<input type="text" data-ng-model="name" placeholder="Your name!">
+		<h1>Hello {{ name }}! </h1>
+		<!--using ng-bind DOES the same thing-->
+		<p ng-bind="name"> </p> 
+		</div>
+
+		<!-- ******Jquery GOOGLE CDN***** -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+		<!-- Angular-->
+		<script src="js/angular.min.js"></script>
+		<script src="js/main.js"></script>
+	</body>
+</html>
