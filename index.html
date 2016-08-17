@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-ng-app="">
+<html data-ng-app="demoApp">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,21 +8,24 @@
 	</head>
 	<body>
 		<!--Viewing live-->
-		Name:
+		<!-- Name:
 		<br />
-		<input type="text" data-ng-model="name" /> {{ name }}
+		<input type="text" data-ng-model="name" /> {{ name }} -->
 
+		<!--//////////////////////////////////////////////////-->
 		<!-- Iterating with ng-repeat-->
-		<div class="container"
+		<!-- <div class="container"
 			data-ng-init="names=['Ahmed', 'Lilit', 'Leyla'] ">
 			<br />
 			<ul>
 				<li data-ng-repeat="personName in names">{{personName}}</li>
 			</ul>
-		</div>
+		</div> -->
+		
+		<!--//////////////////////////////////////////////////-->
 
 		<!--Filters-->
-		<div class="container"
+		<!-- <div class="container"
 		data-ng-init="family=[{name:'Ahmed Soliman',city:'Cairo'},{name:'Lilit Postoyan',city:'Yerevan'},{name:'Leyla Soliman',city:'San Francisco'}]">
 			name:
 			<br />
@@ -31,12 +34,27 @@
 			<ul>
 				<li data-ng-repeat="person in family | filter:person | orderBy:'city'"> {{ person.name | uppercase }} - {{ person.city | lowercase}} </li>
 			</ul>
+		</div> -->
+
+		<!--//////////////////////////////////////////////////-->
+
+		<!--Using Module--> 
+		<!-- <div class="container"
+		data-ng-controller="SimpleController">
+			name:
+			<br />
+			<input type="text" data-ng-model="person" />
+			<br />
+			<ul>
+				<li data-ng-repeat="person in family | filter:person | orderBy:'city'"> {{ person.name | uppercase }} - {{ person.city | lowercase}} </li>
+			</ul>
+		</div> -->
+		<!--//////////////////////////////////////////////////-->
+
+		<div>
+			<!--PLACE HOLDER FOR VIEWS-->
+			<div data-ng-view></div>
 		</div>
-
-
-
-
-
 
 
 		<!-- ******Jquery GOOGLE CDN***** -->
@@ -44,5 +62,38 @@
 		<!-- Angular-->
 		<script src="js/angular.min.js"></script>
 		<script src="js/main.js"></script>
+		<script>
+			var demoApp =angular.module('demoApp', [])
+
+			demoApp.config(function ($routeProvider) {
+				$routeProvider
+				.when ('/view1', 
+				{
+					controller: 'SimpleController',
+					templateUrl: '/view1.html'
+				})
+				.when('/view2',
+				{
+					controller: 'SimpleController',
+					templateUrl: '/view2.html'	
+				})
+				.otherwise({ redirectTo: '/view1' })
+			})
+			
+			var controllers = {}
+			controllers.SimpleController = function ($scope) {
+				$scope.family = [
+				{name:'Ahmed Soliman',city:'Cairo'},
+				{name:'Lilit Postoyan',city:'Yerevan'},
+				{name:'Leyla Soliman',city:'San Francisco'}
+				]
+
+				$scope.addPerson = function () {
+					$scope.family.push(
+						{name: $scope.newPerson.name, city:$scope.newPerson.city})
+				}
+			}
+			demoApp.controller(controllers)
+		</script>
 	</body>
 </html>
