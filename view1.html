@@ -1,0 +1,23 @@
+<div class="container">
+	<h2>View1</h2>
+	Name:
+	<br />
+	<input type="text" data-ng-model="person" />
+	<br>
+	<ul>
+		<li data-ng-repeat="person in family |filter:person | orderBy:'city'"> {{ person.name | uppercase }} - {{ person.city | lowercase}}"> </li>
+	</ul>
+
+	<br>
+	Member Name:
+	<br>
+	<input type="text" data-ng-model="newPerson.name" />
+	<br>
+	Member City:
+	<br>
+	<input type="text" data-ng-model="newPerson.city">
+	<br>
+	<button data-ng-click="addPerson()">Add Person</button>
+
+	<br>
+	<a href="#/view2">View2</a>
